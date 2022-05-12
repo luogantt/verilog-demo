@@ -1,0 +1,56 @@
+#! /usr/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0-128-gf8e29ee5e)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 11;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x55ab4f60cf30 .scope module, "nand_gate_tb" "nand_gate_tb" 2 2;
+ .timescale -9 -11;
+v0x55ab4f653d30_0 .var "aa", 0 0;
+v0x55ab4f653e00_0 .var "bb", 0 0;
+v0x55ab4f653ed0_0 .net "yy", 0 0, L_0x55ab4f654110;  1 drivers
+S_0x55ab4f643130 .scope module, "nand_gate" "nand_gate" 2 7, 3 2 0, S_0x55ab4f60cf30;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Y";
+L_0x55ab4f653fd0 .functor AND 1, v0x55ab4f653d30_0, v0x55ab4f653e00_0, C4<1>, C4<1>;
+L_0x55ab4f654110 .functor NOT 1, L_0x55ab4f653fd0, C4<0>, C4<0>, C4<0>;
+v0x55ab4f60d0c0_0 .net "A", 0 0, v0x55ab4f653d30_0;  1 drivers
+v0x55ab4f60ce90_0 .net "B", 0 0, v0x55ab4f653e00_0;  1 drivers
+v0x55ab4f653b30_0 .net "Y", 0 0, L_0x55ab4f654110;  alias, 1 drivers
+v0x55ab4f653bd0_0 .net *"_ivl_0", 0 0, L_0x55ab4f653fd0;  1 drivers
+    .scope S_0x55ab4f60cf30;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653d30_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653e00_0, 0;
+    %delay 1000, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653d30_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653e00_0, 0;
+    %delay 1000, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653d30_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653e00_0, 0;
+    %delay 1000, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653d30_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55ab4f653e00_0, 0;
+    %delay 1000, 0;
+    %vpi_call 2 18 "$stop" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "stimulus_tb.v";
+    "nandgate.v";
