@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "开始编译"
 
-iverilog comp_conv.v stimulus_tb.v -o fn
+iverilog comp_conv1.v stimulus_tb.v -o fn
 
 #./invet
 
