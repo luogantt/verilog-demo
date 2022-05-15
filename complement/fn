@@ -1,0 +1,58 @@
+#! /usr/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0-128-gf8e29ee5e)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 11;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x55e03e8d7f30 .scope module, "comp_conv_tb" "comp_conv_tb" 2 4;
+ .timescale -9 -11;
+v0x55e03e9214e0_0 .var "a_in", 7 0;
+v0x55e03e9215a0_0 .net "y_out", 7 0, L_0x55e03e921c90;  1 drivers
+S_0x55e03e90f410 .scope module, "comp_conv" "comp_conv" 2 10, 3 5 0, S_0x55e03e8d7f30;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /OUTPUT 8 "a_comp";
+L_0x55e03e921740 .functor NOT 7, L_0x55e03e921670, C4<0000000>, C4<0000000>, C4<0000000>;
+v0x55e03e90f5a0_0 .net *"_ivl_1", 6 0, L_0x55e03e921670;  1 drivers
+v0x55e03e920d50_0 .net *"_ivl_14", 0 0, L_0x55e03e921ad0;  1 drivers
+v0x55e03e920e30_0 .net *"_ivl_16", 0 0, L_0x55e03e921bf0;  1 drivers
+L_0x7f55d9477018 .functor BUFT 1, C4<0000001>, C4<0>, C4<0>, C4<0>;
+v0x55e03e920ef0_0 .net/2u *"_ivl_6", 6 0, L_0x7f55d9477018;  1 drivers
+v0x55e03e920fd0_0 .net *"_ivl_8", 6 0, L_0x55e03e921800;  1 drivers
+v0x55e03e921100_0 .net "a", 7 0, v0x55e03e9214e0_0;  1 drivers
+v0x55e03e9211e0_0 .net "a_comp", 7 0, L_0x55e03e921c90;  alias, 1 drivers
+v0x55e03e9212c0_0 .net "b", 6 0, L_0x55e03e921740;  1 drivers
+v0x55e03e9213a0_0 .net "y", 7 0, L_0x55e03e9219e0;  1 drivers
+L_0x55e03e921670 .part v0x55e03e9214e0_0, 0, 7;
+L_0x55e03e921800 .arith/sum 7, L_0x55e03e921740, L_0x7f55d9477018;
+L_0x55e03e9219e0 .concat8 [ 7 1 0 0], L_0x55e03e921800, L_0x55e03e921ad0;
+L_0x55e03e921ad0 .part v0x55e03e9214e0_0, 7, 1;
+L_0x55e03e921bf0 .part v0x55e03e9214e0_0, 7, 1;
+L_0x55e03e921c90 .functor MUXZ 8, v0x55e03e9214e0_0, L_0x55e03e9219e0, L_0x55e03e921bf0, C4<>;
+    .scope S_0x55e03e8d7f30;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "test.vcd" {0 0 0};
+    %vpi_call 2 15 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55e03e8d7f30 {0 0 0};
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v0x55e03e9214e0_0, 0;
+    %delay 300000, 0;
+    %vpi_call 2 19 "$stop" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x55e03e8d7f30;
+T_1 ;
+    %delay 1000, 0;
+    %load/vec4 v0x55e03e9214e0_0;
+    %addi 1, 0, 8;
+    %store/vec4 v0x55e03e9214e0_0, 0, 8;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "stimulus_tb.v";
+    "comp_conv.v";
