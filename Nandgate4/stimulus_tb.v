@@ -11,6 +11,9 @@ nand_gate nand_gate(
                             );
  
 initial begin
+
+    $dumpfile("test.vcd");
+    $dumpvars(0,nand_gate_tb);
                     aa<=4'b0010;bb<=4'b0010;//reg型变量赋值用带箭头的等号
     #10     aa<=4'b0100;bb<=4'b1000;
     #10     aa<=4'b1100;bb<=4'b1111;
