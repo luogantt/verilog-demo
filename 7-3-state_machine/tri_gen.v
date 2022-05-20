@@ -13,17 +13,17 @@ output[8:0]      d_out;
 
 
 
-reg             state ; 
+reg[2:0]             state ; 
 
 reg[8:0]        d_out;
 
-
+reg[7:0]        con; //计数器,记录平顶周期个数
 
 always@(posedge clk or negedge res )
 
 
    if (~res )begin 
-   state<=0;d_out<=0; 
+   state<=0;d_out<=0; con<=0;
    end
 
    else begin 
@@ -39,14 +39,40 @@ always@(posedge clk or negedge res )
            end
         end
 
+      1://平顶
+        begin 
+        con<=con+1; 
+        
+        if(con==200) begin
+           state <=2;
+           con<=0;
+           end
+         else begin 
+           con<=con+1;
+           end
+        end
 
-      1://下降
+      2://下降
         begin 
         d_out<=d_out-1;
         
         if (d_out==1)begin 
-            state<=0;
+            state<=3;
             end
+        end
+
+
+      3://平顶
+        begin 
+        con<=con+1; 
+        
+        if(con==200) begin
+           state <=0;
+           con<=0;
+           end
+         else begin 
+           con<=con+1;
+           end
         end
         endcase
    end
