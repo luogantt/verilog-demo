@@ -28,7 +28,7 @@ UART_top UART_top(
 );
 initial begin
     $dumpfile("test.vcd");
-    $dumpvars(0,UART_RXer_tb);
+    $dumpvars(0,UART_top_tb);
      
 
          clk<=0 ;res<=0;RX_send<={1'b1,8'h09,1'b0,1'b1,8'h06,1'b0,1'b1,8'h0a,1'b0,16'hffff};
