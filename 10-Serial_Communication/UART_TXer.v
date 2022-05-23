@@ -2,7 +2,7 @@
 //串口通信;
 
 `timescale 1ns/10ps
-module  UART_RXer(
+module  UART_TXer(
                  clk,
 		             res,           
                  data_in,

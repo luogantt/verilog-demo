@@ -3,7 +3,7 @@
 `timescale 1 ns/10 ps 
 
 
-module UART_RXer_tb();
+module UART_TXer_tb();
 
 
 reg            clk,res;
@@ -15,7 +15,7 @@ wire            TX;
 wire            rdy;
 
 
-UART_RXer  UART_RXer(
+UART_TXer  UART_TXer(
                       .clk(clk),
                       .res(res),
                       .data_in(data_in),
@@ -25,7 +25,7 @@ UART_RXer  UART_RXer(
                   );
 initial begin
     $dumpfile("test.vcd");
-    $dumpvars(0,UART_RXer_tb);
+    $dumpvars(0,UART_TXer_tb);
      
 
          clk<=0 ;res<=0;data_in<=8'h0a;en_data_in<=0;

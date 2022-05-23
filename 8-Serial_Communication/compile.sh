@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "开始编译"
 
-iverilog tri_gen.v stimulus_tb.v -o fn
+iverilog UART_RXer.v stimulus_tb.v -o fn
 
 #./invet
 
