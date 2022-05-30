@@ -1,0 +1,66 @@
+#! /usr/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0-128-gf8e29ee5e)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 11;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+S_0x556c250a1f30 .scope module, "dff1_tb" "dff1_tb" 2 5;
+ .timescale -9 -11;
+v0x556c250e8b60_0 .var "clk", 0 0;
+v0x556c250e8c30_0 .var "d", 0 0;
+v0x556c250e8d00_0 .net "q", 0 0, v0x556c250a1e90_0;  1 drivers
+S_0x556c250d84b0 .scope module, "dff1" "dff1" 2 10, 3 10 0, S_0x556c250a1f30;
+ .timescale -9 -11;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "d";
+    .port_info 2 /OUTPUT 1 "q";
+v0x556c250a1790_0 .net "clk", 0 0, v0x556c250e8b60_0;  1 drivers
+v0x556c250a20c0_0 .net "d", 0 0, v0x556c250e8c30_0;  1 drivers
+v0x556c250a1e90_0 .var "q", 0 0;
+E_0x556c250a03f0 .event posedge, v0x556c250a1790_0;
+    .scope S_0x556c250d84b0;
+T_0 ;
+    %wait E_0x556c250a03f0;
+    %load/vec4 v0x556c250a20c0_0;
+    %assign/vec4 v0x556c250a1e90_0, 0;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x556c250a1f30;
+T_1 ;
+    %vpi_call 2 18 "$dumpfile", "test.vcd" {0 0 0};
+    %vpi_call 2 19 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x556c250a1f30 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x556c250e8c30_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x556c250e8b60_0, 0;
+    %delay 10000, 0;
+    %vpi_call 2 21 "$stop" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x556c250a1f30;
+T_2 ;
+    %delay 500, 0;
+    %load/vec4 v0x556c250e8b60_0;
+    %inv;
+    %store/vec4 v0x556c250e8b60_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x556c250a1f30;
+T_3 ;
+    %delay 1000, 0;
+    %load/vec4 v0x556c250e8c30_0;
+    %pad/u 2;
+    %addi 1, 0, 2;
+    %pad/u 1;
+    %assign/vec4 v0x556c250e8c30_0, 0;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "stimulus_tb.v";
+    "fn_sw.v";
