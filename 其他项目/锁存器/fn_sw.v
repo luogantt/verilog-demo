@@ -15,7 +15,7 @@ reg y;
 always@(a or b or sel ) begin 
 
    if (sel==1) begin 
-       y<=a;
+       y=a;
        end 
 
     end
